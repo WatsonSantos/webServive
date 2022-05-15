@@ -1,14 +1,24 @@
-var express = require('express'),
-app = express(),
-port = process.env.PORT || 8000,
-mongoose = require('mongoose'),
-Aluno = require('./api/models/Aluno'),
-bodyParser = require('body-parser');
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/alunosDB');
+require("dotenv").config();
+const express = require('express')
+app = express()
+bodyParser = require('body-parser')
+const { Mongoose } = require('mongoose')
+mongoose = require('mongoose')
+Pessoa = require('./api/models/Pessoa')
+porta = process.env.PORT || 8080
+
+const connectToDatabase = require('./database')
+const routes = require('./api/routes/Routes');
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-var routes = require('./api/routes/Routes');
+
+
+connectToDatabase();
+
+
 routes(app);
-app.listen(port);
-console.log('Mensagem, O servidor do web server RESTful está ativo na porta: ' + port+" ...");
+
+app.listen(porta,()=>{
+    console.log('O servidor do webservice está ativo na porta: ' + porta+" ...")})

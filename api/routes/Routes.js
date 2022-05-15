@@ -1,15 +1,23 @@
 'use strict';
+
 module.exports = function(app) {
-var alunos = require('../controllers/Controller');
+   
+const pessoas = require('../controllers/Controller');
 
-// Rota Alunos
+// Rota Pessoas
 
-app.route('/alunos')
-   .get(alunos.list_all_alunos)
-   .post(alunos.create_aluno);
+app.route('/obterpessoas')
+   .get(pessoas.list_all_pessoas)
+   //.post(pessoas.create_pessoa);
 
-app.route('/alunos/:id')
-   .get(alunos.read_aluno)
-   .put(alunos.update_aluno)
-   .delete(alunos.delete_aluno);
+app.route('/obterpessoa/:pessId')
+   .get(pessoas.read_pessoa)
+   //.put(pessoas.update_pessoa)
+   //.delete(pessoas.delete_pessoa);
+
+app.route('/obterpessoaBI/:numBI')
+   .get(pessoas.read_pessoaBI);
+   
 };
+
+

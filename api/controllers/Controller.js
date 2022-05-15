@@ -1,42 +1,64 @@
 'use strict';
-var mongoose = require('mongoose'),
-Aluno = mongoose.model('Alunos');
+const mongoose = require('mongoose'),
+Pessoa = mongoose.model('pessoas');
 
-exports.list_all_alunos = function(req, res) {
-   Aluno.find({}, function(err, msg) {
+exports.list_all_pessoas = function(req, res) {
+   Pessoa.find({}, function(err, msg) {
       if (err)
-      res.send(err);
+          res.send(err);
       res.json(msg);
    });
 };
-exports.create_aluno = function(req, res) {
-   var novo_aluno = new Aluno(req.body);
-   novo_aluno.save(function(err, msg) {
+
+
+
+exports.read_pessoa =  function(req, res) {
+    Pessoa.findById(req.params.pessId, function(err, msg) {
    if (err)
       res.send(err);
    res.json(msg);
    });
 };
-exports.read_aluno = function(req, res) {
-   Aluno.findById(req.params.msgId, function(err, msg) {
+
+
+exports.read_pessoaBI = function(req, res) {
+    Pessoa.findOne({numBI:req.params.numBI}, function(err, msg) {
    if (err)
       res.send(err);
    res.json(msg);
    });
 };
-exports.update_aluno = function(req, res) {
-   Aluno.findOneAndUpdate({_id: req.params.msgId}, req.body, {new: true}, function(err, msg) {
+
+/*
+exports.create_pessoa = function(req, res) {
+   const nova_pessoa = new Pessoa(req.body);
+   nova_pessoa.save(function(err, msg) {
    if (err)
       res.send(err);
    res.json(msg);
    });
 };
-exports.delete_aluno = function(req, res) {
-   Aluno.remove({
-      _id: req.params.msgId
+
+
+exports.update_pessoa = function(req, res) {
+   Pessoa.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, msg) {
+   if (err)
+      res.send(err);
+   res.json(msg);
+   });
+};
+
+
+exports.delete_pessoa = function(req, res) {
+   Pesssoa.remove({
+      _id: req.params.id
    }, function(err, msg) {
    if (err)
       res.send(err);
-   res.json({ message: 'Aluno deletado com sucesso!' });
+   res.json({ message: 'Pessoa removida com sucesso!' });
    });
+
+
 };
+
+*/
