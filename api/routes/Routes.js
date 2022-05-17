@@ -15,7 +15,7 @@ app.route('/obterpessoa/:pessId')
    //.put(pessoas.update_pessoa)
    //.delete(pessoas.delete_pessoa);
 
-app.route('/obterpessoaBIazbyqosj&spdufgd@ggv2549$562idfnkd876982/:numBI')
+app.route('/obterpessoaBIazbyqosjspdufgdggv2549562idfnkd876982/:numBI')
    .get(pessoas.read_pessoaBI);
    
 };
