@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
  
-//Mongoose
+/* Função para a conexão com o Banco de Dados na Núvem */
 
 function connectToDatabase(){ 
 

@@ -1,29 +1,31 @@
-Webservice usando Node js
+### Webservice usando Node js
 
 
-Author : Watson santos 
+## Author : Watson santos 
 
------TECNOLOGIAS----
+[-----TECNOLOGIAS----]
 
 Este projeto foi desenvolvido com as seguintes tecnologias:
 
-.JavaScript
-.Node Js
-.Express
+-JavaScript
+-Node Js
+-Express
 
-----PROJECTO----
+[--------PROJECTO----]
 
 Este projecto é de um webservice que simula uma instituição de Registo que disponibiliza as informações
 dos cidadão registrados do País.
 
-COMO UTILIZAR?
 
-1- Baixe esse repositório e com o seu o terminal, entre no diretório
+# COMO UTILIZAR?
 
-2- Rode o comando npm install para instalar as dependências
+1- Clone o repositório no Github.
 
-3- E pra iniciar a aplicação, rode o comando npm start 
+2- Abra o CMD dentro da pasta da aplicação.
+
+3- Rode o comando 'npm install' para instalar todas as dependências da aplicação.
+
+4- Execute a aplicação com o comando 'npm start'.
 
 
-Desenvolvido por Watson Santos
 

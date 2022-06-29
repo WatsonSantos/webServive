@@ -1,23 +1,24 @@
-'use strict';
 
 module.exports = function(app) {
    
 const pessoas = require('../controllers/Controller');
 
-// Rota Pessoas
+// --------------------------------- Rotas ------------------------------------
+
 
 app.route('/obterpessoas')
-   .get(pessoas.list_all_pessoas)
-   //.post(pessoas.create_pessoa);
+//Rota de obtenção de todas as pessoas
+   .get(pessoas.list_all_pessoas);
+
 
 app.route('/obterpessoa/:pessId')
-   .get(pessoas.read_pessoa)
-   //.put(pessoas.update_pessoa)
-   //.delete(pessoas.delete_pessoa);
+//Rota de obtenção de pessoas por BI
+   .get(pessoas.read_pessoa);
 
-app.route('/obterpessoaBIazbyqosjspdufgdggv2549562idfnkd876982/:numBI')
+//Rota de obtenção de pessoas pelo BI
+app.route('/obterpessoaBI/:numBI')
    .get(pessoas.read_pessoaBI);
-   
+
 };
 
 
