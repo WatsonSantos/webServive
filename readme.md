@@ -28,4 +28,10 @@ dos cidadão registrados do País.
 4- Execute a aplicação com o comando 'npm start'.
 
 
+# BI para teste:
+
+=> 164322
+=> 164323
+
+
 

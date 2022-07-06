@@ -6,11 +6,12 @@ Pessoa = mongoose.model('pessoas');
 
 
 //Controler para todas as pessoas
+
 exports.list_all_pessoas = function(req, res) {
    Pessoa.find({}, function(err, msg) {
       if (err)
-          res.send(err);
-      res.json(msg);
+          res.status(404).send({err,message: 'Nenhuma Cidadão encontrado' });
+      res.status(200).json(msg);
    });
 };
 
@@ -19,8 +20,8 @@ exports.list_all_pessoas = function(req, res) {
 exports.read_pessoa =  function(req, res) {
     Pessoa.findById(req.params.pessId, function(err, msg) {
    if (err)
-      res.send(err);
-   res.json(msg);
+       res.status(404).send({err,message: 'Cidadão não encontrado' });
+   res.status(200).json(msg);
    });
 };
 
@@ -33,15 +34,15 @@ exports.read_pessoaBI = function(req, res) {
     //Passndo a chave no header
     req.headers['x-access-token'] = key;
 
-    
     let webserviceChave = req.headers['x-access-token'];
+
     if (!webserviceChave){ 
      return res.status(403).send({message: 'Nenhuma chave foi informada.' });
     }
     Pessoa.findOne({numBI:req.params.numBI}, function(err, msg) {
    if (err)
-      res.send(err);
-   res.json(msg);
+       res.status(404).json({err,message: 'Cidadão não encontrado' });
+   res.status(200).json(msg);
    });
 };
 
@@ -52,7 +53,7 @@ exports.create_pessoa = function(req, res) {
    nova_pessoa.save(function(err, msg) {
    if (err)
       res.send(err);
-   res.json(msg);
+   res.status(201).json({ message: 'Cidadão criado com sucesso!' });
    });
 };
 
@@ -61,7 +62,7 @@ exports.update_pessoa = function(req, res) {
    Pessoa.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, msg) {
    if (err)
       res.send(err);
-   res.json(msg);
+   res.status(201).json({ message: 'Cidadão atualizado com sucesso!' });
    });
 };
 
@@ -72,7 +73,7 @@ exports.delete_pessoa = function(req, res) {
    }, function(err, msg) {
    if (err)
       res.send(err);
-   res.json({ message: 'Pessoa removida com sucesso!' });
+   res.status(201).json({ message: 'Cidadão removido com sucesso!' });
    });
 
 

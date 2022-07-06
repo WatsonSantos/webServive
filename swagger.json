@@ -1,0 +1,25 @@
+{
+    "openapi" : "3.0.1",
+    "info":{
+        "title":"Base de Dados de Registro",
+        "description": "Documentação da Api rest De Registo",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths":{
+        "/obterpessoaBI/:numBI":{
+            "get":{
+                "parameters":{
+                    "in" : "params",
+                    "numBI": "Número be BI",
+                    "type" : "number"
+                },
+                "responses":{
+                    
+                }
+            }
+        }
+
+    }
+
+}
