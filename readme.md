@@ -28,10 +28,15 @@ dos cidadão registrados do País.
 4- Execute a aplicação com o comando 'npm start'.
 
 
+# Rota da Documentação Swagger:
+
+locallhost:8080/api-docs
+
 # BI para teste:
 
 => 164322
 => 164323
+=> 164324
 
 
 

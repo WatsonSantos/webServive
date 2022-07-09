@@ -1,21 +1,113 @@
 {
     "openapi" : "3.0.1",
     "info":{
-        "title":"Base de Dados de Registro",
-        "description": "Documentação da Api rest De Registo",
-        "version": "1.0.0"
+        "title":"Webservice - Base de Dados de Registro",
+        "description": "Documentação do WebService Rest da Base de Dados do Registo disponibilizado para a Polícia Nacional",
+        "version": "1.0.0",
+        "contact":{
+            "email":"Watsontavares72@gmail.com"
+        }
+        
     },
+    "servers":[
+    {
+        "url": "https://localhost:8080",
+        "description":"Webservice no servidor local"
+    },
+    {
+        "url": "https://dashboard.heroku.com/apps/server-webservice",
+        "description":"Webservice no serviço de hospedagem"
+    }
+],
     "basePath": "/",
+
+    "components":{
+        "securitySchemes":{ 
+
+            "bearerAuth":{
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+      }
+    },
+
     "paths":{
-        "/obterpessoaBI/:numBI":{
+        "/obtercidadaoBI/{numBI}":{
             "get":{
-                "parameters":{
-                    "in" : "params",
-                    "numBI": "Número be BI",
-                    "type" : "number"
-                },
+                "description":"Rota de busca de cidadão pelo Número de BI",
+                "summary":"Buscar cidadão pelo Número de BI",
+                "tags":["Cidadãos"],
+                "security":[{"bearerAuth": []}
+                ],
+                "parameters":[
+                    {
+                    "in" : "path",
+                    "name": "numBI",
+                    "type" : "number",
+                    "description":"Número de BI para a busca",
+                    "required": true
+                }
+            ],
                 "responses":{
-                    
+                    "401":{
+                        "description":"Unauthorized "
+                    },
+
+                    "200":{
+                        "description": "OK"
+                    }
+                     
+                }
+            }
+        },
+
+        "/obtercidadao/{cidadaoId}":{
+            "get":{
+                "description":"Rota de busca de cidadão pelo id",
+                "summary":"Buscar cidadão pelo id",
+                "tags":["Cidadãos"],
+                "security":[{"bearerAuth": []}
+                ],
+                "parameters":[
+                    {
+                    "in" : "path",
+                    "name": "cidadaoId",
+                    "type" : "ObjectId",
+                    "description":"O id para a busca",
+                    "required": true
+                }
+            ],
+                "responses":{
+                    "401":{
+                        "description":"Unauthorized "
+                    },
+
+                    "200":{
+                        "description": "OK"
+                    }
+                     
+                }
+            }
+        },
+
+        "/obtercidadaos":{
+            "get":{
+                "description":"Rota de busca de todos os cidadãos",
+                "summary":"Buscar todos os cidadão",
+                "tags":["Cidadãos"],
+                "security":[{"bearerAuth": []}
+                ],
+                "parameters":[],
+                "responses":{
+                    "401":{
+                        "description":"Unauthorized "
+                    },
+
+                    "200":{
+                        "description": "OK"
+                    }
+                     
                 }
             }
         }

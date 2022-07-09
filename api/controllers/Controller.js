@@ -1,79 +1,70 @@
 'use strict';
+
+//Importando Mongooose e o Modell dos cidadãos
 const mongoose = require('mongoose'),
-Pessoa = mongoose.model('pessoas');
-
-//-------------Controllers-------------
+   Cidadao = mongoose.model('cidadaos');
 
 
-//Controler para todas as pessoas
+//------------------------------------Controllers------------------------------------
 
-exports.list_all_pessoas = function(req, res) {
-   Pessoa.find({}, function(err, msg) {
-      if (err)
-          res.status(404).send({err,message: 'Nenhuma Cidadão encontrado' });
+
+//Controller para todas os cidadãos
+exports.list_all_cidadaos = function (req, res) {
+   Cidadao.find({}, function (err, msg) {
+      if (msg == null)
+         res.status(404).send({ message: 'Nenhuma Cidadão encontrado' });
       res.status(200).json(msg);
    });
 };
 
 
-//Controler para uma pessoa atravez do ID
-exports.read_pessoa =  function(req, res) {
-    Pessoa.findById(req.params.pessId, function(err, msg) {
-   if (err)
-       res.status(404).send({err,message: 'Cidadão não encontrado' });
-   res.status(200).json(msg);
+//Controller para um cidadão atravez do ID
+exports.read_cidadao = function (req, res) {
+   Cidadao.findById({ _id: req.params.cidadaoId }, function (err, msg) {
+      if (null)
+         res.status(404).send({ message: 'Cidadão não encontrado' });
+      res.status(200).json(msg);
    });
 };
 
 
-//Controler para uma pessoa atravez do BI
-exports.read_pessoaBI = function(req, res) {
-
-    //Pegando o valor da chave no arquivo .env
-    const key = process.env.WEBSERVICE_KEY
-    //Passndo a chave no header
-    req.headers['x-access-token'] = key;
-
-    let webserviceChave = req.headers['x-access-token'];
-
-    if (!webserviceChave){ 
-     return res.status(403).send({message: 'Nenhuma chave foi informada.' });
-    }
-    Pessoa.findOne({numBI:req.params.numBI}, function(err, msg) {
-   if (err)
-       res.status(404).json({err,message: 'Cidadão não encontrado' });
-   res.status(200).json(msg);
+//Controller para um cidadao atravez do BI
+exports.read_cidadaoBI = function (req, res) {
+   Cidadao.findOne({ numBI: req.params.numBI }, function (err, msg) {
+      if (err)
+         res.status(404).send({ message: 'Cidadão não encontrado' });
+      res.status(200).json(msg);
    });
 };
 
 
-//Controller de criação de pessoas
-exports.create_pessoa = function(req, res) {
-   const nova_pessoa = new Pessoa(req.body);
-   nova_pessoa.save(function(err, msg) {
-   if (err)
-      res.send(err);
-   res.status(201).json({ message: 'Cidadão criado com sucesso!' });
+//Controller de criação de cidadão
+exports.create_cidadao = function (req, res) {
+   const nova_cidadao = new Cidadao(req.body);
+   nova_cidadao.save(function (err, msg) {
+      if (err)
+         res.send(err);
+      res.status(201).json({ message: 'Cidadão criado com sucesso!' });
    });
 };
 
-//Controller de atualização de pessoas
-exports.update_pessoa = function(req, res) {
-   Pessoa.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, msg) {
-   if (err)
-      res.send(err);
-   res.status(201).json({ message: 'Cidadão atualizado com sucesso!' });
+//Controller de atualização de cidadão
+exports.update_cidadao = function (req, res) {
+   Cidadao.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, function (err, msg) {
+      if (err)
+         res.send(err);
+      res.status(201).json({ message: 'Cidadão atualizado com sucesso!' });
    });
 };
 
-//Controler de exclusão de pessoas
-exports.delete_pessoa = function(req, res) {
-   Pesssoa.remove({
+//Controller de exclusão de cidadão
+exports.delete_cidadao = function (req, res) {
+   Cidadao.remove({
       _id: req.params.id
-   }, function(err, msg) {
-   if (err)
-      res.send(err);
-   res.status(201).json({ message: 'Cidadão removido com sucesso!' });
+   }, function (err, msg) {
+      if (err)
+         res.send(err);
+      res.status(201).json({ message: 'Cidadão removido com sucesso!' });
    });
 
 

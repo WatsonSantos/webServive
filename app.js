@@ -10,7 +10,7 @@ mongoose = require('mongoose')
 const swaggerUI = require('swagger-ui-express')
 const swaggerDocument = require('./swagger.json')
 
-Pessoa = require('./api/models/Pessoa')
+Pessoa = require('./api/models/Cidadao')
 const connectToDatabase = require('./database')
 const routes = require('./api/routes/Routes');
 
@@ -31,7 +31,7 @@ app.get('/', (req, res)=>{
 //Chamando todas as rotas
 routes(app);
 
-//Swagger
+//Rota da documentação Swagger
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument ))
 
 porta = process.env.PORT || 8080
