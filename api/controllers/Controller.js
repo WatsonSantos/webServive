@@ -10,6 +10,7 @@ const mongoose = require('mongoose'),
 
 //Controller para todas os cidadãos
 exports.list_all_cidadaos = function (req, res) {
+   
    Cidadao.find({}, function (err, msg) {
       if (msg == null)
          res.status(404).send({ message: 'Nenhuma Cidadão encontrado' });
@@ -30,6 +31,7 @@ exports.read_cidadao = function (req, res) {
 
 //Controller para um cidadao atravez do BI
 exports.read_cidadaoBI = function (req, res) {
+ 
    Cidadao.findOne({ numBI: req.params.numBI }, function (err, msg) {
       if (err)
          res.status(404).send({ message: 'Cidadão não encontrado' });
