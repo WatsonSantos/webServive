@@ -1,4 +1,4 @@
-'use strict';
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -81,7 +81,7 @@ module.exports = mongoose.model('cidadaos', Cidadao);
 
 
 
-//Adicionando um cidadao
+//Adicionando um cidadão
 /*
 
 const cidad = mongoose.model('cidadaos')

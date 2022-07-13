@@ -9,7 +9,8 @@ module.exports = {
 
         //Passando a chave no header
         req.headers['x-access-token'] = key;
-
+        req.headers.authorization = key;
+        
         return next()
 
     }

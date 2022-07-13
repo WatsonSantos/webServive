@@ -1,4 +1,4 @@
-'use strict';
+
 
 //Importando Mongooose e o Modell dos cidadãos
 const mongoose = require('mongoose'),
@@ -15,7 +15,7 @@ exports.list_all_cidadaos = function (req, res) {
       if (msg == null)
          res.status(404).send({ message: 'Nenhuma Cidadão encontrado' });
       res.status(200).json(msg);
-   });
+   })
 };
 
 
@@ -36,7 +36,7 @@ exports.read_cidadaoBI = function (req, res) {
       if (err)
          res.status(404).send({ message: 'Cidadão não encontrado' });
       res.status(200).json(msg);
-   });
+   })
 };
 
 

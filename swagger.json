@@ -11,11 +11,11 @@
     },
     "servers":[
     {
-        "url": "https://localhost:8080",
+        "url": "http://localhost:8080",
         "description":"Webservice no servidor local"
     },
     {
-        "url": "https://dashboard.heroku.com/apps/server-webservice",
+        "url": "http://dashboard.heroku.com/apps/server-webservice",
         "description":"Webservice no serviço de hospedagem"
     }
 ],
